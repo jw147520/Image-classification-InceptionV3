@@ -1,0 +1,8 @@
+aug_test
+bottleneck/
+data/
+inception/
+log/
+*.png
+*.csv
+*.pb

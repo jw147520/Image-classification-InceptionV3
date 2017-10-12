@@ -1,0 +1,8 @@
+benign_A
+benign_F
+benign_PT
+benign_TA
+malignant_DC
+malignant_LC
+malignant_MC
+malignant_PC
