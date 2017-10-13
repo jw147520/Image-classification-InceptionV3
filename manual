@@ -46,6 +46,11 @@
 
 
 4. Testing
+    테스트 이미지를 저장할 디렉토리(./test_data)를 생성한 후 하위에 각 label 을 이름으로 하는
+    디렉토리들을 추가로 생성한 후 각 label 별로 테스트 이미지를 저장한다.
+
+    다음 명령어를 사용하여 test.py 를 실행한다.
+    python test.py ./test_data
 
 
 5. Classify
