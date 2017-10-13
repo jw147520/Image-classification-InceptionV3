@@ -1,4 +1,4 @@
-1. Image Data 준비
+1. Image Data 준비 (Training image)
     현재 디렉토리에 'data' 디렉토리 생성 후(변경 가능)
     1) ./data/training 하위에 각 label 명으로 폴더를 생성하여 training images 를 저장한다.
         ex) ./data/training/cat , ./data/training/dog , ...
@@ -14,6 +14,8 @@
     output 디렉토리가 추가로 생성되고 이 안에 augmented images 가 저장된다. augmented images 를
     training 에 사용하려면 output 디렉토리 내부의 파일들을 상위 디렉토리(각 label 별 디렉토리)로
     옮기고 output 디렉토리를 삭제해준다.
+
+* Training 이전에 test dataset 을 확보해준다.
 
 3. Training
     콘솔에서 아래 명령어로 학습
