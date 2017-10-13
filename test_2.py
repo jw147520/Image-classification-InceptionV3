@@ -1,14 +1,19 @@
+# -*- coding: utf-8 -*-
+# 학습 완료된 classifier 를 테스트한다.
+# 학습 완료된 classifier 를 사용해 여러 장의 이미지를 분류해보고 싶을 때도 사용 가능.
+# usage command : python test_2.py "image_path"
+
 import tensorflow as tf
 import sys
 import glob
 import csv
 
-# change this as you see fit
+# 실행 시 전달받은 image_path 에 접근해 모든 jpg 파일을 불러온다.
 image_path = sys.argv[1]
 image_path += "/*.jpg"
 image_list = glob.glob(image_path)
 
-total = len(image_list)
+total = len(image_list)  # image 개수
 mal_cnt = 0
 ben_cnt = 0
 

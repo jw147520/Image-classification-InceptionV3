@@ -1,8 +1,11 @@
 aug_test
 bottleneck/
+bottlenecks/
 data/
 inception/
 log/
 *.png
 *.csv
 *.pb
+backup/
+*.txt

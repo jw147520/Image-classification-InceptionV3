@@ -1,1 +1,55 @@
-http://gusrb.tistory.com/16
+1. Image Data 준비
+    현재 디렉토리에 'data' 디렉토리 생성 후(변경 가능)
+    1) ./data/training 하위에 각 label 명으로 폴더를 생성하여 training images 를 저장한다.
+        ex) ./data/training/cat , ./data/training/dog , ...
+
+2. Image Augmentation (생략 가능)
+    - data augmentation 을 수행하면 90도, 180도, 270도 회전한 이미지와 좌우, 상하 반전 이미지,
+      random distortion 을 적용한 이미지 3장이 추가로 생성되어 dataset 을 부풀린다.
+
+    아래 명령어로 data augmentation 을 수행한다
+      python data_augmentation.py [image_dir]
+    이 때 인자로 넘겨주는 값은 원본이미지가 저장된 경로(./data)이다.
+    위의 명령어를 실행하면 원본 이미지 디렉토리(./data/) 하위의 각 label 별 디렉토리 내부에
+    output 디렉토리가 추가로 생성되고 이 안에 augmented images 가 저장된다. augmented images 를
+    training 에 사용하려면 output 디렉토리 내부의 파일들을 상위 디렉토리(각 label 별 디렉토리)로
+    옮기고 output 디렉토리를 삭제해준다.
+
+3. Training
+    콘솔에서 아래 명령어로 학습
+    1) cd image_retraining
+
+    2) python retrain.py \
+    --bottleneck_dir=../bottlenecks \
+    --how_many_training_steps 500 \
+    --model_dir=../inception \
+    --output_graph=../retrained_graph.pb \
+    --output_labels=../retrained_labels.txt \
+    --image_dir=../data \
+    --summaries_dir=../log
+
+        option 설명(상황에 맞게 변경 가능)
+            (1) --bottleneck_dir = 학습할 사진을 변환하여 저장할 디렉토리
+            (2) --how_many_training_stpes = training step 설정
+            (3) --model_dir = inception 모델을 다운로드 할 디렉토리
+            (4) --output_graph = 학습된 graph 바이너리 파일(.pb) 저장 경로
+            (5) --output_labels = 학습후 분류에 사용할 label 파일 저장 경로
+            (6) --image_dir = 원본 이미지가 저장되어 있는 디렉토리
+            (7) --summaries_dir = tensorboard 에 사용할 로그 파일 저장 경로
+
+    2) 위의 명령어를 실행하여 학습을 진행하고 학습이 완료되면 다음 파일들이 생성된다.
+        (1) retrained_graph.pb
+        (2) retrained_label.txt
+        (3) 원본 이미지가 변환되어 bottlenecks/ 에 label 별로 저장된다.
+
+
+4. Testing
+
+
+5. Classify
+
+6. Binary classification & Asymmetric misclassification cost 의 경우 (생략 가능)
+    - Cut-off 조절을 통해 evaluation 시도.
+
+7. Plotting graphs
+
