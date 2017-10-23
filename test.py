@@ -14,7 +14,7 @@ image_path = []
 for dir_name in os.listdir(sys.argv[1]):  # 원본 이미지 경로에 있는 모든 하위 디렉토리(즉 모든 label)
     image_path.append(sys.argv[1] + "/" + dir_name + "/*.jpg")
 
-image_list = []
+image_list = [] # 해당 경로에 존재하는 이미지 파일들의 리스트
 for label_path in image_path:
     temp_list = glob.glob(label_path)
     image_list += temp_list
