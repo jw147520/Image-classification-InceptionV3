@@ -9,3 +9,4 @@ log/
 *.pb
 backup/
 *.txt
+.idea
