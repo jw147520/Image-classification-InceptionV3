@@ -1,5 +1,4 @@
 aug_test
-bottleneck/
 bottlenecks/
 data/
 inception/
@@ -9,3 +8,5 @@ log/
 *.pb
 backup/
 *.txt
+.idea
+*.h5
