@@ -41,19 +41,17 @@ def load_batch(data_path, batch_size):
 
 	batch_count = 1
 	index = 0
-	while True:
+	while index < len(data_pair):
 		try:
 			x_data = []
 			y_label = []
-
 			count = 0
-			index = index % len(data_pair)
-			print("---------- On Batch: " + str(batch_count) + " ----------")
-			while count < batch_size:
-				pair = data_pair[index]
 
+			print("---------- On Batch: " + str(batch_count) + " ----------")
+			while count < batch_size and index < len(data_pair):
+				pair = data_pair[index]
 				img = cv2.imread(pair[0], cv2.IMREAD_COLOR)
-				img = cv2.resize(img, (139, 139))
+				img = cv2.resize(img, (299, 299))
 
 				label = []  # one-hot encoded label
 				for i in range(len(class_list)):
@@ -66,7 +64,10 @@ def load_batch(data_path, batch_size):
 				x_data.append(img)
 				y_label.append(label)
 
+				print(class_list, label)
+
 				count += 1
+				index += 1
 			print("Batch loaded.")
 			batch_count += 1
 			yield x_data, y_label, class_list
